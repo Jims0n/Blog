@@ -1,7 +1,8 @@
 <%- include("partials/header.ejs"); -%>
 
-<h1><%=postTitle %></h1>
+<h1><%=postTitle %></h1><small>By <%= postAuthor %></small>
 
-<p><%= postContent %></p>
+<p><%- postContent %></p>
+
 
 <%- include("partials/footer.ejs"); -%>

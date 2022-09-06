@@ -1,17 +1,22 @@
 <%- include("partials/header.ejs"); -%>
+<div class="mt-4 p-5  text-center" id="mydiv">
+    <h1 class="text-white">Create and edit your thoughts with articlus!</h1>
 
-<h1>Home</h1>
+    <p class="fs-5 text-white"><%= startingContent %></p>
+    
+</div>
 
-<p><%= startingContent %></p>
 
+    <% posts.forEach(function(post){ %>
+        <div>
+        <h1><%=post.title %></h1> <p>By <%= post.author %></p>
+        
+           <%- post.content.substring(0, 100) + "..." %> <a href="/post/<%= post._id %>">Read more</a>
+            
+    </div>
+    <% }) %>
  
 
-<% posts.forEach(function(post){ %>
-    <h1><%= post.title %></h1>
-    <p>
-        <%= post.content.substring(0, 100) + "..." %>
-    <a href="/post/<%= post._id %>">Read more</a>
-    </p>
-<% }) %>
+
 
 <%- include("partials/footer.ejs"); -%>

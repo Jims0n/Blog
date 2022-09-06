@@ -1,0 +1,46 @@
+<%- include("partials/header.ejs"); -%>
+<h1 class="text-center fw-bold">
+    Dashboard
+</h1>
+<small>Welcome </small> <%= currentUser.username %>
+
+<div>
+    <a class="btn btn-success mt-1" href="/compose"> Add post</a>
+</div>
+
+<table class="table table-secondary table-striped mt-3" >
+    <tr>
+        <th>Title</th>
+        <th>Date</th>
+        <th></th>
+    </tr>
+    
+    <% posts.forEach(function(post){ %>
+        <tr>
+            
+            <td><%=post.title %></td>
+            <td><%= post.createdAt %></td>
+            
+
+            
+            <td>
+                <form action="/post/<%= post._id %>" method="post" onSubmit="return confirm('Are you sure you want to delete the article?');">
+                    <input type="hidden" name="_method" >
+                    <button type="submit" class="btn btn-danger float-end"><i class="fa-solid fa-trash-can"></i></button>
+    
+    
+                </form>
+            </td>
+        </tr>
+        
+    <% }) %>
+
+</table>
+    
+
+<div>
+    <a class="btn btn-secondary btn-lg" href="/logout" role="button">Log Out</a>
+</div>
+
+
+<%- include("partials/footer.ejs"); -%>
